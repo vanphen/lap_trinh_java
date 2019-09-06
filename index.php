@@ -5,7 +5,16 @@ class Fraction{
 	public $tu;
 	public $mau;
 
-	public function __construct($_tu,$_mau){
+
+	public function __construct(){
+		$a = func_get_args();
+		$i = func_num_args();
+		if(method_exists($this,$f='__construct'.$i)){
+			call_user_func_array(array($this,$f),$a);
+		}
+	}
+
+	public function __construct1($_tu,$_mau){
 			if($_mau == 0){
 			echo 'mau khong the la 0';
 			return 0;
@@ -16,12 +25,14 @@ class Fraction{
 		}
 	}
 
+
+
 	public function show(){
 		return $this->tu.'/'.$this->mau;
 	}
 
 	public function add($phanso){
-		$temp = new Fraction(1,2);
+		$temp = new Fraction();
 		$temp->tu = $this->tu * $phanso->mau + $phanso->tu*$this->mau;
 		$temp->mau= $this->mau * $phanso->mau;
 
@@ -33,6 +44,9 @@ class Fraction{
 
 
 
+
+
+
 }
 
 $phanso1 = new Fraction(1,2);
@@ -41,7 +55,7 @@ $phanso2 = new Fraction(4,2);
 
 $phanso3 = new Fraction(1,2);
 
-$phanso4 = new Fraction(1,2);
+
 
 
 
