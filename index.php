@@ -36,16 +36,25 @@ class Fraction{
 
 $phanso1 = new Fraction(1,2);
 
-$phanso2 = new Fraction(3,2);
+$phanso2 = new Fraction(4,2);
 
 $phanso3 = new Fraction(1,2);
 
+$phanso4 = new Fraction(1,2);
 
-echo '<br>';
+
 
 $phanso3 = $phanso1->add($phanso2);
 
 echo $phanso3->show();
+
+
+echo '<br>';
+
+$phanso4 = $phanso1->add($phanso3);
+
+echo $phanso4->show();
+
 
 
 
