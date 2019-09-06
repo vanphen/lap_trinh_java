@@ -20,9 +20,10 @@ class Fraction{
 		return $this->tu.'/'.$this->mau;
 	}
 
-	// public function add($_tu,$_mau){
-	// 	return ($this->tu*$_mau + $_tu *$this->mau)/($this->mau * $_mau);
-	// }
+	public function add($phanso){
+		return ($this->tu * $phanso->mau + $phanso->tu*$this->mau).'/'.($this->mau * $phanso->mau);
+		
+	}
 
 
 
@@ -33,7 +34,9 @@ $phanso1 = new Fraction(1,2);
 $phanso2 = new Fraction(3,2);
 
 
-echo $phanso2->show();
+echo '<br>';
+
+echo $phanso1->add($phanso2);
 
 
 
