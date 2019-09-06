@@ -6,24 +6,46 @@ class Fraction{
 	public $mau;
 
 
-	public function __construct(){
-		$a = func_get_args();
-		$i = func_num_args();
-		if(method_exists($this,$f='__construct'.$i)){
-			call_user_func_array(array($this,$f),$a);
-		}
-	}
 
-	public function __construct1($_tu,$_mau){
-			if($_mau == 0){
-			echo 'mau khong the la 0';
-			return 0;
-		}else{
-			$this->tu = $_tu;
-			$this->mau = $_mau;
+	// public function __construct($_tu,$_mau){
+	// 		if($_mau == 0){
+	// 		echo 'mau khong the la 0';
+	// 		return 0;
+	// 	}else{
+	// 		$this->tu = $_tu;
+	// 		$this->mau = $_mau;
+			
+	// 	}
+	// }
+
+
+
+	public function __call($nameMethod,$_count){
+		if ($nameMethod == '__construct' ) {
+			switch (count($_count)) {
+				case 0:
+					// code...
+					break;
+				case 1:
+
+					break;
+				case 2:
+					if($_count[1]==0){
+						echo 'mau khong the la 0';
+						break;
+					}else{
+					    $this->tu = $_count[0];
+						$this->mau = $_count[1];
+						break;
+					}
+
+				
+				
+			}
 			
 		}
 	}
+
 
 
 
