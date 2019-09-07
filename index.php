@@ -47,7 +47,7 @@ class Fraction{
 	}
 
 	public function add($phanso){
-		// $ucln = $this->USCLN(($this->tu * $phanso->mau + $phanso->tu*$this->mau),($this->mau * $phanso->mau));
+		
 	
 		$tu = ($this->tu * $phanso->mau + $phanso->tu*$this->mau);
 		$mau= ($this->mau * $phanso->mau);
@@ -58,7 +58,7 @@ class Fraction{
 	}
 
 	public function sub($phanso){
-		$ucln = $this->USCLN(($this->tu * $phanso->mau - $phanso->tu*$this->mau),($this->mau * $phanso->mau));
+	
 	
 		$tu = $this->tu * $phanso->mau - $phanso->tu*$this->mau;
 		$mau= $this->mau * $phanso->mau;
@@ -70,10 +70,10 @@ class Fraction{
 
 	public function mul($phanso){
 
-		$ucln = $this->USCLN(($this->tu * $phanso->tu),($this->mau * $phanso->mau));
 	
-		$tu = ($this->tu * $phanso->tu)/$ucln;
-		$mau= ($this->mau * $phanso->mau)/$ucln;
+	
+		$tu = ($this->tu * $phanso->tu);
+		$mau= ($this->mau * $phanso->mau);
 
 		return new Fraction($tu,$mau);
 
@@ -81,10 +81,10 @@ class Fraction{
 
 
 	public function div($phanso){
-		$ucln = $this->USCLN(($this->tu * $phanso->mau),($this->mau * $phanso->tu));
+	
 
-		$tu = ($this->tu * $phanso->mau)/$ucln ;
-		$mau= ($this->mau * $phanso->tu)/$ucln;
+		$tu = ($this->tu * $phanso->mau);
+		$mau= ($this->mau * $phanso->tu);
 
 		return new Fraction($tu,$mau);
 

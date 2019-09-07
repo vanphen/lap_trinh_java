@@ -4,7 +4,7 @@ class SoPhuc{
 
     public $a;
     public $b;
-    public $i;
+
 
 
 
@@ -37,7 +37,11 @@ class SoPhuc{
 
             return new SoPhuc($a,$b);
     }
-    
+    public function div($sophuc){
+        $a = ($this->a* $sophuc->a+$this->b*$sophuc->b)/(($this->a)*($this->a)+($this->b)*($this->b));
+        $b = ($this->a* $sophuc->b-$this->b*$sophuc->a)/(($this->a)*($this->a)+($this->b)*($this->b));
+        return new SoPhuc($a,$b);
+    }
 
 
 
@@ -45,12 +49,12 @@ class SoPhuc{
     
 $sophuc = new SoPhuc(1,2);
 
-$sophuc2 = new SoPhuc(1,2);
+$sophuc2 = new SoPhuc(1,4);
 
 $sophuc3 = new SoPhuc(1,2);
 
 
-$sophuc3 = $sophuc->mul($sophuc2);
+$sophuc3 = $sophuc->div($sophuc2);
 
 echo $sophuc3->show();
 
