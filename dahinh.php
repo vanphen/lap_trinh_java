@@ -56,6 +56,11 @@ $sophuc3 = new SoPhuc(1,2);
 
 $sophuc3 = $sophuc->div($sophuc2);
 
+$sophuc3 = $sophuc->plus($sophuc2);
+
+$sophuc3 = $sophuc->sub($sophuc2);
+
+$sophuc3 = $sophuc->mul($sophuc2);
 echo $sophuc3->show();
 
 
