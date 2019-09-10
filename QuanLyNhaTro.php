@@ -11,16 +11,18 @@ class NhaTro{
 	const giaphongloai2 =3000000;
 	const giaphongloai3 =1500000;
 	const BONUS =500000;
+	public $khachtro;
 
 
 
 
 
-	public function __construct($_tenphong,$_songuoi,$_diachi,$_dientich){
+	public function __construct($_tenphong,$_songuoi,$_diachi,$_dientich,$_khachtro){
 		$this->tenphong = $_tenphong;
 		$this->songuoi = $_songuoi;
 		$this->diachi = $_diachi;
 		$this->dientich = $_dientich;
+		$this->khachtro = $_khachtro;
 
 
 
@@ -48,7 +50,7 @@ class NhaTro{
 	public function show(){
 		$this->giaPhong();
 
-		echo 'Tên Phòng : '.$this->tenphong.'<br>'.'Số người ở : '.$this->songuoi.'<br>'.'Diện tích : '.$this->dientich.' m2 <br>'.'Địa chỉ :'.$this->diachi.'<br>'.'Giá Phòng '.$this->giaphong.'<br>';
+		echo 'Tên Phòng : '.$this->tenphong.'<br>'.'Số người ở : '.$this->songuoi.'<br>'.'Diện tích : '.$this->dientich.' m2 <br>'.'Địa chỉ :'.$this->diachi.'<br>'.'Giá Phòng '.$this->giaphong.'<br>'.'Tên Khách trọ :'.$this->khachtro->ten.'<br>';
 		
 
 	}
@@ -134,10 +136,37 @@ class ThanhToan extends TienChiTieu{
 
 
 }
-$phongtro = new NhaTro(103,8,'Đại La',60);
-$phongtro1 = new NhaTro(104,3,'Gải phóng',40);
-$phongtro2 = new NhaTro(105,2,'Đại cồ việt',15);
-$phongtro3 = new NhaTro(106,3,'Đại cồ việt',50);
+
+
+class KhachTro{
+	public $ten;
+	public $ngaysinh;
+	public $nghenghiep;
+	public $quequan;
+	public $sodienthoai;
+	public $cmnd;
+
+	public function __construct($_ten,$_ngaysinh,$_nghenghiep,$_quequan,$_sodienthoai,$_cmnd){
+		$this->ten = $_ten;
+		$this->ngaysinh = $_ngaysinh;
+		$this->nghenghiep  = $_nghenghiep;
+		$this->quequan = $_quequan;
+		$this->sodienthoai = $_sodienthoai;
+		$this->cmnd = $_cmnd;
+
+
+	}
+
+	public function show(){
+		echo 'Thông tin khách : <br>'.'Họ tên :'.$this->ten.'<br>'.'Ngày Sinh :'.$this->ngaysinh.'<br>'.'Nghề Ngiệp :'.$this->nghenghiep.'<br>'.'Quên Quán :'.$this->quequan.'<br>'.'Số Điện Thoại :'.$this->sodienthoai.'<br>'.'CMND :'.$this->cmnd.'<br>';
+	}
+}
+
+$khach1 = new KhachTro('Phhạm Văn Tớ','12-12-2012','phụ hồ','hà nội',12345678,123456789);
+
+
+$phongtro = new NhaTro(103,8,'Đại La',60,$khach1);
+
 
 $tienchitieu = new TienChiTieu($phongtro,'Tiền Điện',39);
 $tiennuoc = new TienChiTieu($phongtro,'Tiền Nước',0);
@@ -146,6 +175,7 @@ $tienguixe = new TienChiTieu($phongtro,'Tiền Gửi Xe',0);
 $tienvesinh = new TienChiTieu($phongtro,'Tiền Vệ Sinh',0);
 
 $thanhtoan = new ThanhToan();
+
 
 
 $tienchitieu->show();
