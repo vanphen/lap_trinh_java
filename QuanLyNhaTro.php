@@ -77,11 +77,12 @@ class TienChiTieu{
 }
 class ThanhToan extends TienChiTieu{
 
-	public $tongtien;
+	public $tiendien;
 	public $tiennuoc;
 	public $tienmang;
 	public $tienguixe;
 	public $tienvesinh;
+
 	public function __construct(){
 
 		
@@ -91,22 +92,22 @@ class ThanhToan extends TienChiTieu{
 		
 
 		if($tienchitieu->soluong>=0 && $tienchitieu->soluong<=50){
-			$this->tongtien=$tienchitieu->soluong*2000;
+			$this->tiendien=$tienchitieu->soluong*2000;
 		}else if($tienchitieu->soluong>=51 && $tienchitieu->soluong<=100){
-			$this->tongtien=$tienchitieu->soluong*2500;
+			$this->tiendien=$tienchitieu->soluong*2500;
 		}else if($tienchitieu->soluong>=101 && $tienchitieu->soluong<=200){
-			$this->tongtien=$tienchitieu->soluong*2700;
+			$this->tiendien=$tienchitieu->soluong*2700;
 		}else if($tienchitieu->soluong>=201 && $tienchitieu->soluong<=300){
-			$this->tongtien=$tienchitieu->soluong*3000;
+			$this->tiendien=$tienchitieu->soluong*3000;
 		}else if($tienchitieu->soluong>=301 && $tienchitieu->soluong<=400){
-			$this->tongtien=$tienchitieu->soluong*3500;
+			$this->tiendien=$tienchitieu->soluong*3500;
 		}else if($tienchitieu->soluong>=401 && $tienchitieu->soluong<=500){
-			$this->tongtien=$tienchitieu->soluong*4000;
+			$this->tiendien=$tienchitieu->soluong*4000;
 		}else if($tienchitieu->soluong>=501){
-			$this->tongtien=$tienchitieu->soluong*5000;
+			$this->tiendien=$tienchitieu->soluong*5000;
 		}
 
-		return $this->tongtien;
+		return $this->tiendien;
 	}
 
 	public function tiennuoc($tienchitieu){
@@ -124,6 +125,10 @@ class ThanhToan extends TienChiTieu{
 	public function tienvesinh($tienchitieu){
 			$this->tienvesinh = $tienchitieu->thongtinphong->songuoi*40000;
 		return $this->tienvesinh;
+	}
+
+	public function tongTien(){
+		return ($this->tiendien+$this->tiennuoc+$this->tienmang+$this->tienguixe+$this->tienvesinh);
 	}
 
 
@@ -158,6 +163,7 @@ echo '<br>';
 echo $tienvesinh->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tienvesinh($tienvesinh);
 echo '<br>';
 
+echo 'Tổng chi tiêu chi phí của phòng là :'.$thanhtoan->tongTien();
 
 
 
