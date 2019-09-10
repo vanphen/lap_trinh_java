@@ -50,7 +50,8 @@ class NhaTro{
 	public function show(){
 		$this->giaPhong();
 
-		echo 'Tên Phòng : '.$this->tenphong.'<br>'.'Số người ở : '.$this->songuoi.'<br>'.'Diện tích : '.$this->dientich.' m2 <br>'.'Địa chỉ :'.$this->diachi.'<br>'.'Giá Phòng '.$this->giaphong.'<br>'.'Tên Khách trọ :'.$this->khachtro->ten.'<br>';
+		echo 'Tên Phòng : '.$this->tenphong.'<br>'.'Số người ở : '.$this->songuoi.'<br>'.'Diện tích : '.$this->dientich.' m2 <br>'.'Địa chỉ :'.$this->diachi.'<br>'.'Giá Phòng '.$this->giaphong.'<br>';
+		$this->khachtro->show();
 		
 
 	}
@@ -139,33 +140,63 @@ class ThanhToan extends TienChiTieu{
 
 
 class KhachTro{
-	public $ten;
-	public $ngaysinh;
-	public $nghenghiep;
-	public $quequan;
-	public $sodienthoai;
-	public $cmnd;
-
-	public function __construct($_ten,$_ngaysinh,$_nghenghiep,$_quequan,$_sodienthoai,$_cmnd){
-		$this->ten = $_ten;
-		$this->ngaysinh = $_ngaysinh;
-		$this->nghenghiep  = $_nghenghiep;
-		$this->quequan = $_quequan;
-		$this->sodienthoai = $_sodienthoai;
-		$this->cmnd = $_cmnd;
+	public $thongtinkhach;
 
 
+	public function __construct($_thongtinkhach){
+
+		$this->thongtinkhach = $_thongtinkhach;
 	}
 
 	public function show(){
-		echo 'Thông tin khách : <br>'.'Họ tên :'.$this->ten.'<br>'.'Ngày Sinh :'.$this->ngaysinh.'<br>'.'Nghề Ngiệp :'.$this->nghenghiep.'<br>'.'Quên Quán :'.$this->quequan.'<br>'.'Số Điện Thoại :'.$this->sodienthoai.'<br>'.'CMND :'.$this->cmnd.'<br>';
+		foreach ($this->thongtinkhach as $ten => $stt) {
+			echo 'Khách : '.$ten.' <br>';
+			foreach ($stt as $tieude => $thongtin)
+				echo "  $tieude: $thongtin <br>";
+			echo '<br>';
+		}
 	}
 }
 
-$khach1 = new KhachTro('Phhạm Văn Tớ','12-12-2012','phụ hồ','hà nội',12345678,123456789);
 
 
-$phongtro = new NhaTro(103,8,'Đại La',60,$khach1);
+
+
+
+    $diem = [
+        '1' => [
+            'Họ Tên' => 'Phạm văn Thạo',
+            'Ngày Sinh' => '22/12/2019',
+            'Nghề Nghiệp'  => 'Phụ hồ',
+            'Quê Quán'=> 'hà nội',
+            'Số Điện Thoai'=>12345678,
+            'CMND'=>123456789
+        ],
+        '2' => [
+         	'Họ Tên' => 'Hoàng đức huy',
+            'Ngày Sinh' => '3/5/1999',
+            'Nghề Nghiệp'  => 'Phụ hồ',
+            'Quê Quán'=> 'hà tây',
+            'Số Điện Thoai'=>123,
+            'CMND'=>1234
+        ],
+        '3' => [
+         	 'Họ Tên' => 'Nguyễn Minh Thành',
+            'Ngày Sinh' => '12/3/1996',
+            'Nghề Nghiệp'  => 'Phụ hồ',
+            'Quê Quán'=> 'hà nam',
+            'Số Điện Thoai'=>12345,
+            'CMND'=>1234567
+        ],
+    ];
+
+
+    $show = new KhachTro($diem);
+
+
+
+
+$phongtro = new NhaTro(103,8,'Đại La',60,$show);
 
 
 $tienchitieu = new TienChiTieu($phongtro,'Tiền Điện',39);
