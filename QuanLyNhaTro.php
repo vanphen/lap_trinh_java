@@ -113,6 +113,20 @@ class ThanhToan extends TienChiTieu{
 		$this->tiennuoc = $tienchitieu->thongtinphong->songuoi*15000;
 		return $this->tiennuoc;
 	}
+	public function tienmang($tienchitieu){
+		$this->tienmang = $tienchitieu->thongtinphong->songuoi*50000;
+		return $this->tienmang;
+	}
+	public function tienguixe($tienchitieu){
+			$this->tienguixe = $tienchitieu->thongtinphong->songuoi*15000;
+		return $this->tienguixe;
+	}
+	public function tienvesinh($tienchitieu){
+			$this->tienvesinh = $tienchitieu->thongtinphong->songuoi*40000;
+		return $this->tienvesinh;
+	}
+
+
 
 }
 $phongtro = new NhaTro(103,8,'Đại La',60);
@@ -122,6 +136,9 @@ $phongtro3 = new NhaTro(106,3,'Đại cồ việt',50);
 
 $tienchitieu = new TienChiTieu($phongtro,'Tiền Điện',39);
 $tiennuoc = new TienChiTieu($phongtro,'Tiền Nước',0);
+$tienmang = new TienChiTieu($phongtro,'Tiền Mạng',0);
+$tienguixe = new TienChiTieu($phongtro,'Tiền Gửi Xe',0);
+$tienvesinh = new TienChiTieu($phongtro,'Tiền Vệ Sinh',0);
 
 $thanhtoan = new ThanhToan();
 
@@ -131,7 +148,15 @@ $tienchitieu->show();
 echo $tienchitieu->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tiendien($tienchitieu);
 echo '<br>';
 echo $tiennuoc->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tiennuoc($tiennuoc);
+echo '<br>';
 
+echo $tienmang->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tienmang($tienmang);
+echo '<br>';
+
+echo $tienguixe->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tienguixe($tienguixe);
+echo '<br>';
+echo $tienvesinh->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tienvesinh($tienvesinh);
+echo '<br>';
 
 
 
