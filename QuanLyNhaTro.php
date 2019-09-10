@@ -78,7 +78,12 @@ class TienChiTieu{
 class ThanhToan extends TienChiTieu{
 
 	public $tongtien;
+	public $tiennuoc;
+	public $tienmang;
+	public $tienguixe;
+	public $tienvesinh;
 	public function __construct(){
+
 		
 
 	}
@@ -104,6 +109,11 @@ class ThanhToan extends TienChiTieu{
 		return $this->tongtien;
 	}
 
+	public function tiennuoc($tienchitieu){
+		$this->tiennuoc = $tienchitieu->thongtinphong->songuoi*15000;
+		return $this->tiennuoc;
+	}
+
 }
 $phongtro = new NhaTro(103,8,'Đại La',60);
 $phongtro1 = new NhaTro(104,3,'Gải phóng',40);
@@ -111,11 +121,16 @@ $phongtro2 = new NhaTro(105,2,'Đại cồ việt',15);
 $phongtro3 = new NhaTro(106,3,'Đại cồ việt',50);
 
 $tienchitieu = new TienChiTieu($phongtro,'Tiền Điện',39);
+$tiennuoc = new TienChiTieu($phongtro,'Tiền Nước',0);
 
 $thanhtoan = new ThanhToan();
 
+
 $tienchitieu->show();
+
 echo $tienchitieu->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tiendien($tienchitieu);
+echo '<br>';
+echo $tiennuoc->tenloaitien.' mà bạn phải trả là :'.$thanhtoan->tiennuoc($tiennuoc);
 
 
 
